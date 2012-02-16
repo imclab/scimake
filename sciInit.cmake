@@ -16,7 +16,7 @@
 #####################################################################
 
 if (NOT DEFINED TXCMAKE_DIR)
-  set(TXCMAKE_DIR ${PROJECT_SOURCE_DIR}/CMake)
+  set(TXCMAKE_DIR ${PROJECT_SOURCE_DIR}/sciMake)
 endif ()
 include(${TXCMAKE_DIR}/sciFuncsMacros.cmake)
 include(${TXCMAKE_DIR}/sciGetDepsFromInstall.cmake)
@@ -205,7 +205,7 @@ endif ()
 #
 ######################################################################
 
-include(${TXCMAKE_DIR}/Modules/sciFindPackage.cmake)
+include(${TXCMAKE_DIR}/Modules/SciFindPackage.cmake)
 
 ######################################################################
 #
