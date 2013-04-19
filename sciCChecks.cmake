@@ -185,7 +185,7 @@ if (${C_COMPILER_ID} STREQUAL GNU OR ${C_COMPILER_ID} STREQUAL Clang)
     endif ()
   # ENDIF()
   set(AVX_FLAG -mavx)
-  set(OPENMP_FLAG -fopenmp)
+  set(OPENMP_FLAG)
 
 elseif (${C_COMPILER_ID} STREQUAL Intel)
 

@@ -18,11 +18,12 @@ if (DEBUG_CMAKE)
   sciPrintString("CMAKE_Fortran_COMPILER_ID = ${CMAKE_Fortran_COMPILER_ID}.")
 endif ()
 if ("${CMAKE_Fortran_COMPILER_ID}" STREQUAL GNU)
+  # Removed openmp
   # Not sure if we need an option to specify whether or not to add
   # openmp: Just always add it for now.  Another alternative is to add
   # an openmp variable that can be added on a case-by-case basis.
-  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -ffixed-line-length-132 -fopenmp")
-  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fopenmp")
+  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -ffixed-line-length-132")
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
   if (NOT USING_MINGW)
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -pipe")
     set(CMAKE_Fortran_FLAGS_RELEASE "-fPIC -O3")
@@ -164,7 +165,7 @@ foreach (txlib ${CMAKE_Fortran_IMPLICIT_LINK_LIBRARIES})
 
 # Ignore additional Franklin pathscale Cray wrapper libraries
   if (NOT libprocessed)
-    foreach (lib openmp eh mv mpath pscrt)
+    foreach (lib eh mv mpath pscrt)
       if (${txlib} STREQUAL ${lib})
         if (DEBUG_CMAKE)
           message("${txlib} is a additional Franklin pathscale Cray wrapper library.  Ignoring.")
